@@ -1,0 +1,142 @@
+\documentclass[fontsize=9pt]{scrartcl}
+\usepackage[inline]{asymptote}
+\usepackage{amsmath, amssymb}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage[a4paper, total={6.5in, 10.2in}]{geometry}
+\begin{document}
+\title{ Problems: }
+\author{seriousPossibilists}
+\date{}
+\maketitle
+
+\subsubsection*{Problem 1: (Junior Balkan MO Shortlist 2022)} 
+Let $a, b,$ and $c$ be positive real numbers such that $a + b + c = 1$. Prove the following inequality
+ \[ a \left({\frac{b}{a}} \right)^{\frac13} + b \left({\frac{c}{b}} \right)^{\frac13} + c \left({\frac{a}{c}} \right)^{\frac13} \le ab + bc + ca + \frac{2}{3}. \]
+    \begin{flushright}
+        { \emph{Anastasija Trajanova, Macedonia} }
+    \end{flushright}
+\subsubsection*{Solution 1:} We write $\sum_{\text{cyc}}$ to mean the sum where we cycle through the $n$ variables in the problem. \newline
+For example, $\sum_{\text{cyc}} a^2 = a^2 + b^2+c^2$ if there are $3$ variables in a problem. \newline
+Now, rewrite the inequality as \[\sum_{\text{cyc}} a^{2/3}b^{1/3} - \sum_{\text{cyc}} ab \le \frac 23\]
+Let $f(a,b,c)$ denote the left hand side $\implies$ \[\frac{\partial^2}{\partial a^2}f = \frac{\partial}{\partial a} \left( \frac 23 a^{\frac{-1}{3}}b^{\frac 13} + \frac 13 a^{\frac{-2}3} c^{\frac 23} - b-c \right)\] \[=-\frac{2}{9} \cdot \frac{b^{\frac 13}}{a^{\frac 43}} - \frac 29 \cdot \frac{c^{\frac 23}}{a^{\frac 53}} \le 0 \implies \text{ $f$ is concave in each of $a,b,c$.}\]
+Hence, $f$ is maximised when $a=b=c$ (pushing the variables together). Together with $a+b+c = 1$, this implies
+$a=b=c=\frac13 \implies $ maximum value of $f = f(\frac 13, \frac 13, \frac 13) = \frac 23$, as required. $\hfill \blacksquare$
+\subsubsection*{Solution 2:} 
+\textbf{Claim:} \[3ab + a + \frac 13 \ge 3(a^2b)^{\frac13}.\]
+\textbf{Proof:} By AM-GM. $\hfill \blacksquare$ ~\\
+Then we have \[a \left({\frac{b}{a}} \right)^{\frac13} + b \left({\frac{c}{b}} \right)^{\frac13} + c \left({\frac{a}{c}} \right)^{\frac13} = \sum_{\text{cyc}} (a^2b)^{\frac13} \le \sum_{\text{cyc}} \frac{3ab}{3} + \sum_{\text{cyc}} \frac a3 + \frac 39 =ab+bc+ca+\frac23. \quad \quad \blacksquare\] 
+
+\subsubsection*{Problem 2: (Junior Balkan MO Shortlist 2023)} 
+Let $a,b,c,d$ be positive real numbers with $abcd=1$. Prove that
+\[ \sqrt{\frac{a}{b+c+d^2+a^3}}+\sqrt{\frac{b}{c+d+a^2+b^3}}+\sqrt{\frac{c}{d+a+b^2+c^3}}+\sqrt{\frac{d}{a+b+c^2+d^3}} \leq 2 \]
+\subsubsection*{Solution:} We write $\sum_{\text{cyc}}$ to mean the sum where we cycle through the $n$ variables in the problem. \newline
+For example, $\sum_{\text{cyc}} a^2 = a^2 + b^2+c^2$ if there are $3$ variables in a problem. \newline
+\textbf{Claim:} \[a^2+b^2+c^2+d^2 \ge a+b+c+d \iff \sum_{\text{cyc}}a^2 \ge (abcd)^{\frac14} (a+b+c+d) \text{ (since $abcd$ = 1)}\]
+\textbf{Proof:}
+Muirhead's inequality finishes, since $(2,0,0,0)$ majorizes $(\frac 54, \frac 14, \frac 14, \frac 14)$. $\hfill \blacksquare$ ~\\
+Now note that by QM-AM:
+\[\sum_{\text{cyc}} \sqrt{\frac{a}{b+c+d^2+a^3}} \le 4 \cdot \sqrt{\frac{\sum_{\text{cyc}}\frac{a}{b+c+d^2+a^3}}{4}} \implies\]
+it is sufficient to prove \[\sum_{\text{cyc}}\frac{a}{b+c+d^2+a^3} \le 1.\]
+By Cauchy-Schwarz: \[(b+d+c^2+a^3) \left(b+d+1+\frac 1a \right) \ge (a+b+c+d)^2 \implies \sum_{\text{cyc}}\frac{a}{b+c+d^2+a^3} \le \frac{\sum_{\text{cyc}} a \left(b+d+1+\frac 1a \right)}{(a+b+c+d)^2}\]
+\[ \iff \sum ab \text{ ( the pairwise product of terms)} + a+b+c+d+4 \le (a+b+c+d)^2\]
+which reduces to proving $a^2+b^2+c^2+d^2 \ge a+b+c+d$ after application of AM-GM and using the fact $abcd = 1$
+to prove $(a+c)(b+d) \ge 4$. $\hfill \blacksquare$
+\subsubsection*{Problem 3: (Tournament Of Towns - Spring 2018 Junior A-Level)}
+	Let $O$ be the center of the circumscribed circle of the triangle $ABC$. Let $AH$ be the altitude in this triangle, 
+    and let $P$ be the base of the perpendicular drawn from point $A$ to the line $CO$. 
+    Prove that the line $HP$ passes through the midpoint of the side $AB$. 
+    \begin{flushright}
+        { \emph{Egor Bakaev} }
+    \end{flushright}
+    
+\subsubsection*{Solution:} 
+
+\begin{center}
+    \begin{asy}
+        import graph; size(12.629263544037949cm); 
+        real labelscalefactor = 0.5; /* changes label-to-point distance */
+        pen dps = linewidth(0.7) + fontsize(10); defaultpen(dps); /* default pen style */ 
+        pen dotstyle = black; /* point style */ 
+        real xmin = -0.6253302147141357, xmax = 12.003933329323813, ymin = -0.18666868534967962, ymax = 8.287722112988657;  /* image dimensions */
+        
+         /* draw figures */
+        draw((3.,7.)--(2.,2.), linewidth(1.0)); 
+        draw((2.,2.)--(6.77818,2.), linewidth(1.0)); 
+        draw((6.77818,2.)--(3.,7.), linewidth(1.0)); 
+        draw(circle((4.38909,4.1221820000000005), 3.195529294064443), linewidth(1.0)); 
+        draw((3.,7.)--(3.,2.), linewidth(1.0)); 
+        draw((xmin, -0.8882804749925705*xmin + 8.020924949985142)--(xmax, -0.8882804749925705*xmax + 8.020924949985142), linewidth(1.0)); /* line */
+        draw((xmin, 1.1257705512533798*xmin + 3.622688346239861)--(xmax, 1.1257705512533798*xmax + 3.622688346239861), linewidth(1.0)); /* line */
+        draw((xmin, -5.*xmin + 17.)--(xmax, -5.*xmax + 17.), linewidth(1.0)); /* line */
+         /* dots and labels */
+        dot((3.,7.),linewidth(4.pt) + dotstyle); 
+        label("$A (0,a)$", (1.9834811587869346,7.07709485608318), NE * labelscalefactor); 
+        dot((2.,2.),linewidth(4.pt) + dotstyle); 
+        label("$B(b,0)$", (0.7184441546548699,1.5181300520857897), NE * labelscalefactor); 
+        dot((6.77818,2.),linewidth(4.pt) + dotstyle); 
+        label("$C$", (6.615913471160683,1.5115948534781078), NE * labelscalefactor); 
+        dot((4.38909,4.1221820000000005),linewidth(4.pt) + dotstyle); 
+        label("$O$", (4.430249210123141,4.200644493675767), NE * labelscalefactor); 
+        dot((3.,2.),linewidth(4.pt) + dotstyle); 
+        label("$H$", (3.1227717726652244,1.5697049618095706), NE * labelscalefactor); 
+        dot((2.1837761538461535,6.081119230769231),linewidth(4.pt) + dotstyle); 
+        label("$P$", (1.88048046436478,5.530877346404291), NE * labelscalefactor); 
+        dot((2.5,4.5),linewidth(4.pt) + dotstyle); 
+        label("$M$", (2.0036400032513297,4.3749748186701565), NE * labelscalefactor); 
+        clip((xmin,ymin)--(xmin,ymax)--(xmax,ymax)--(xmax,ymin)--cycle); 
+    \end{asy}
+\end{center}
+We present two solutions: \newline
+\textbf{Cartesian coordinate bash: (not recommended)} \newline
+Shift the triangle so that $B,C$ lie on the $x-$axis and $A$ lies
+on the $y-$axis.
+The line $AB$ has equation $\frac{y}{x-b} = \frac{-a}{b} \implies y=\frac{-a}{b}x+a$.
+Hence the perpendicular bisector of segment $AB$ has the form
+$y = \frac{b}ax + c$ for an arbitrary constant $c$. Since the perpendicular bisector 
+of the line passes through $(\frac{b}2, \frac{a}2)$, $c$ turns out to be $\frac{a^2-b^2}{2a}$. \newline
+Hence the perpendicular bisector of segment $AB$ is $y = \frac{b}ax + \frac{a^2-b^2}{2a}$.
+Note that $x = \frac{b+c}{2}$ is the perpendicular bisector of $BC$.
+The point of intersection of both the perpendicular bisectors, i.e the circumcenter,
+turns out to be: \[O = \left(\frac{b+c}{2}, \frac{a^2+bc}{2a}\right).\]
+Now, the equation of line $CO = $ \[\frac{y}{x-c} = \frac{a^2+bc}{a(b-c)} \implies y = x \left(\frac{a^2+bc}{a(b-c)} \right) + c \left(\frac{a^2 + bc}{a(c-b)} \right)\]
+Let this line be $\ell_1$.
+We are ready to solve for the coordinate of $P$: \newline
+Any line perpendicular to line $CO$ has the form: \[y = x\left( \frac{a(c-b)}{a^2 + bc} \right) + p \text{ for an arbitrary constant $p$ and since $(0,a)$ lies on the line through $P$, $p=a$. }\]
+Let this line be $\ell_2$. Solving $\ell_1,\ell_2$ gives us the coordinates of $P$. Hence:
+\[\frac{ax(c-b)}{a^2+bc}-\frac{a^2x-bcx}{a(b-c)} = \frac{a^2c+bc^2}{a(c-b)} - a \implies x = \frac{b(a^2+c^2)(a^2+bc)}{(ab-ac)^2+(a^2+bc)^2}\]
+\[\implies \text{(from $\ell_2$) } y = \frac{b(a^2+c^2)(ac - ab)}{(ab-ac)^2+(a^2+bc)^2} + a \implies \frac yx = \frac{ac-ab}{a^2 + bc} + \frac ax\]
+Note that $\frac ax$ = \[\frac{a(ab-ac)^2+a(a^2+bc)^2}{b(a^2+c^2)(a^2+bc)} = \frac{a^5+a^3b^2+a^3c^2+ab^2c^2}{a^4b+a^2b^2c+a^2bc^2+b^2c^3} =\frac{a\left(a^2+b^2\right)\left(a^2+c^2\right)}{b\left(a^2+bc\right)\left(a^2+c^2\right)}  =\frac{a\left(a^2+b^2\right)}{b\left(a^2+bc\right)}\]
+\[\implies \frac yx = \frac{a\left(a^2+b^2\right)}{b\left(a^2+bc\right)} + \frac{ac-ab}{a^2+bc} =\frac{a\left(a^2+b^2\right)+\left(ac-ab\right)b}{b\left(a^2+bc\right)} =\frac{a^3+abc}{b\left(a^2+bc\right)} = \frac ab.\]
+Hence if the coordinates of $P = (h,k)$, then $\frac hk = \frac ba$. Note that $H = (0,0) \implies$ the equation
+of line $HP = \frac yx=\frac hk$ if $P = (h,k) \implies $ equation of $HP=\frac yx = \frac ba$. But then the midpoint of
+$AB = \left(\frac b2, \frac a2 \right)$ clearly lies on this line.  $\hfill \blacksquare$ \newline \newline
+\textbf{Synthetic Solution:} \newline
+Let $HP \cap AB $ at $M$. \newline
+Note that $\angle AOB = 2 \angle ABC \implies \angle OCA = 90^{\circ} - \angle ABC$. But $AH \perp BC \implies \angle BAH = 90^{\circ}-\angle ABC$.
+Also, $AP \perp PC$ and $AH \perp BC \implies APHC$ is cyclic. $\implies \angle PCA = \angle PHA = 90^{\circ} - \angle ABC$.
+Hence $\angle BAH = \angle PHA \implies AM=MH$. Also, $\angle MHB = 90^{\circ} - (90^{\circ} - \angle ABC) = \angle ABC \implies MH = MB = AM$.
+Hence, $M$ is the midpoint of $AB$, as required. $\hfill \blacksquare$
+
+\subsubsection*{Problem 4: (Balkan MO Shortlist 2021)}
+Denote by $f(n)$ the largest prime divisor of $n$. Let $a_{n+1} = a_n + f(a_n)$ be a recursively
+defined sequence of integers with $a_1 = 2$. Determine all natural numbers $m$ such that there
+exists some $i \in \mathbb{N}$ with $a_i = m^2$. \begin{flushright}
+    \emph{Nikola Velov, North Macedonia}
+\end{flushright}
+\subsubsection*{Solution:}
+The sequence is $2, 4, 6, 9, 12, 15, 20, 25, 30, 35, 42, 49, 56, 63, 70, 77, 88, 99, 110, 121, 132, 143, 156, \dots$ \newline \newline
+\textbf{Claim:} Let $\{p_1 = 2, p_2 = 3, p_3 = 5, \dots \}$ be the set of primes in ascending order. Define $1$ to be the zeroth prime number.
+Then the sequence is composed of $p_i$ - chains of the form $p_i(p_{i-1}), p_i(p_{i-1} + 1) \dots p_i^2, \dots p_i(p_{i+1} - 2), p_i(p_{i+1} -1)$
+\newline
+\textbf{Proof:} We proceed by induction. Clearly, the claim holds for $p=2, 3$. Then assume it holds 
+for the $p_i^{\text{th}}$- chain. For the $p_{i+1}^{\text{th}}$- chain, the first term is $p_{i+1} \cdot p_i$. The following terms are clear
+by the recursion in the problem since $f(p_{i-1}), f(p_{i-1}+1), \dots f(p_{i+1}-1) < p_{i+1}$. And hence the chain ends
+at the term $p_{i+1} (p_{i+2} - 1)$ (since $ f(p_{i+2}) = p_{i+2})$, upon which the next $p_{i+1}^{\text{th}}$ chain starts.
+The next chain starts immediately and is of the same form, again by the recursion. $ \hfill \blacksquare$
+\newline \newline
+\textbf{Claim:} The only squares that appear in the sequence are squares of prime numbers. \newline
+\textbf{Proof:} Let $v_p(x)$ denote the highest power of $p$ that divides $x$. We work on the $p_i^{\text{th}}$ - chain. Note that all prime squares occur, since the 
+$p_{i}^{\text{th}}$ - chain contains $p_i^2$ $\forall \ i$. We note that no squares of composite numbers appear by noting that 
+$v_{p_{i}}(x) \ \forall  \ x$ in the chain is 1 unless $x = p_i^2$, since by Bertrand's postulate, $p_i < p_{i+1} < 2p_i$. Hence only prime squares occur. $\hfill \blacksquare$
+\end{document}
