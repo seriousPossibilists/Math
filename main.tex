@@ -1,0 +1,94 @@
+\documentclass[fontsize=10pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage[a4paper, total={7in, 10.2in}]{geometry}
+\usepackage{txfonts}
+
+\begin{document}
+\title{\textsc{problems:}}
+\author{seriousPossibilists}
+\date{}
+\maketitle
+
+
+\subsubsection*{Problem 1: (2025 USAJMO)}
+    \textit{Let $\mathbb Z$ be the set of integers, and let $f\colon \mathbb Z \to \mathbb Z$ be a function. 
+    Prove that there are infinitely many integers $c$ such that the function $g\colon \mathbb Z \to \mathbb Z$ 
+    defined by $g(x) = f(x) + cx$ is not bijective. \newline
+    \emph{Note: A function $g\colon \mathbb Z \to \mathbb Z$ is bijective if for every integer $b$, 
+    there exists exactly one integer $a$ such that $g(a) = b$.} }
+    \begin{flushright}
+        \emph{John Berman}
+    \end{flushright}
+    \subsubsection*{Solution:}
+    Define $h(x) = f(x+1)-f(x)$. Set $c=-h(x)$ for some 
+    $x \Rightarrow$ \[g(x+1) = f(x) -h(x) \cdot x = f(x) +f(x+1)x - f(x)x = f(x+1)x-(x-1)f = g(x).\]
+    Hence $g(x)$ is not bijective. Assume that $h(x)$ does 
+    not take infinitely many values over $\mathbb{Z}$,
+    otherwise the problem is now trivial. 
+    Let $m$ be the minimum of $h(x)$ over all values of $x$. 
+    Set $c = |m| + 2$ and note that \[g(x+1) = g(x) + h(x)+c \ge g(x) + m+c \ge g(x)+2 \ \forall \ x\]
+    and hence $g(x)$ is not bijective. $\hfill \blacksquare$
+\subsubsection*{Problem 2: (Mexican National Olympiad 2022)}
+\textit{
+Let $n$ be a positive integer. In an $n\times n$ garden, a fountain is to be built with $1\times 1$ platforms covering the entire garden. Ana places all the platforms at a different height. Afterwards, Beto places water sources in some of the platforms. The water in each platform can flow to other platforms sharing a side only if they have a lower height. Beto wins if he fills all platforms with water.
+Find the least number of water sources that Beto needs to win no matter how Ana places the platforms. }
+\subsubsection*{Solution:}
+We claim that the answer is \[ \left \lceil  \frac{n^2}{2} \right \rceil. \] We first prove that 
+$\left \lceil  \frac{n^2}{2} \right \rceil$ is necessary. Consider a checkerboard colouring,
+with $\left \lceil  \frac{n^2}{2} \right \rceil$ white squares, the rest of the squares being black. Let each white square 
+have a taller platform than the each of the black squares. Clearly, each of the white squares needs to have a 
+fountain for Beto to win. \newline
+We bow prove that $\left \lceil  \frac{n^2}{2} \right \rceil$ is sufficent. Each fountain can bve placed in such a way 
+as to create $\left \lfloor  \frac{n^2}{2} \right \rfloor$ $2 \times 1$ regions, with a $1\times 1$ cell having its own
+is fountain if $n$ id odd. Each region has a higher and lower platform, hence all regions are filled. $\hfill \blacksquare$
+
+
+\subsubsection*{Problem 3: (Canada National Olympiad 2025)}
+	\textit{Determine all positive integers $a$, $b$, $c$, $p$, where $p$ and $p+2$ are odd primes and
+    \[2^ap^b=(p+2)^c-1.\] }
+\subsubsection*{Solution:}
+    It is well known that $2^k - 1$ is prime $\implies k$ is prime, and $2^k+1$ is prime $\implies k$ is a power of $2$. \newline
+    Taking the equation under (mod $p+1) \implies p+1 \mid (-1)^b \cdot 2^a\implies p = 2^m - 1 \implies m$ is prime. 
+    $p+2 = 2^m+1 \implies m$ is a power of $2$ or $m=0$, where the latter is absurd.
+    The only prime power of $2$ is $2$, which means $p = 3$. 
+    Then the equation reduces to \[2^a3^b = 5^c-1 \quad a,b,c\in \mathbb{Z}^+\]
+    Since $3 \mid 5^c-1$, $c$ is even. Let $c=2c'$. Then the equation is \[2^a3^b=25^{c'}-1\] By
+    Lifting The Exponent Lemma (using the standard notation of $v_p(n)$ 
+    to denote the highest power of $p$ that divides $n$ for prime $p$), 
+    we get $v_3(c')+1=v_3(c)+1=b =\implies 3^{b-1} \mid c$ and $v_2(c') +3= v_2(c)-1 + 3 = v_2(c)+2=a \implies 2^{a-2} \mid c$.
+    Since $3^{b-1}, 2^{a-2}$ are coprime, $2^{a-2}3^{b-1} \mid c \implies 2^{a-2}3^{b-1} \le c$. \newline 
+    Now \[ 5^{2^{a-2}} \ge 2^a+1 \iff a \ge 2 \text{ and } 5^{3^{b-1}} > 3^b \iff b \ge 1\]
+    Hence \[5^c \ge 5^{2^{a-2}+ 3^{b-1}} > 2^a3^b + 3^b > 2^a3^b+1  \ \forall \ a>2 \text{ and } b>1\] 
+    which leaves us with a single case outlined below. \newline
+    Equality can thus only hold in the original problem 
+    if $b=1 \implies a=3$, which yields the solution set \[(a,b,c,p) = \{(3, 1, 2, 3) \}. \] $\hfill \blacksquare$ 
+    \newline
+    \textbf{Alternate:} Get $p=3$ as before. Now, by Zsigmondy's theorem, $c \le 2$ (since $3$ is a divisor), which finishes immediately
+     and gives the above solution. $\hfill \blacksquare$
+
+\subsubsection*{Problem 4: (APMO 2017)}
+\textit{
+	We call a $5$-tuple of integers \emph{arrangeable} if its elements can be labeled $a, b, c, d, e$ 
+    in some order so that $a-b+c-d+e=29$. Determine all $2017$-tuples of integers $n_1, n_2, . . . , n_{2017}$ 
+    such that if we place them in a circle in clockwise order, then any $5$-tuple of numbers in consecutive positions 
+    on the circle is \emph{arrangeable}. }
+\begin{flushright}
+    \emph{Warut Suksompong, Thailand}
+\end{flushright}
+
+\subsubsection*{Solution:}
+Let $m_1, m_2, \dots , m_{2017}$ be an such a tuple and let 
+$m_i' = m_i-29$. Then for consecutive $m_i'$ where $i \in \{1,2,3,4,5 \}$, \[ \sum m_i' = 0  
+\implies m_1'-m_2'+m_3'-m_4'+m_5'=m_2'-m_3'+m_4'-m_5'+m_6'=0 \implies m_1 \equiv m_6 \text{ (mod 2).}\]
+We can argue similarly to show that $m_i' \equiv m_{i+5}' \ \text{(mod 2)}$ for all $i$. Since $\gcd(5, 2017) = 1$, 
+\[m_1' \equiv m_2' \equiv \dots \equiv m_{2017}' \ \text{(mod 2) and since $m_1'-m_2'+m_3'-m_4'+m_5' = 0$, } 
+m_1' \equiv m_2' \equiv \dots \equiv m_{2017}' \equiv 0 \ \text{(mod 2)} \]
+Let $m_i'' = \frac{m_i'}{2}$. Clearly, $m_i'' \in \mathbb{Z}$ since all $m_i'$ are even. 
+Note that any $5$-tuple in consecutive positions is still \emph{arrangeable}, since 
+\[m_i''-m_{i+1}''+m_{i+2}''-m_{i+4}''+m_{i+5}'' = \frac{m_1'-m_2'+m_3'-m_4'+m_5'}{2}  = 0.\]
+Hence, the integers $m_1''+29, m_2''+29, \dots , m_{2017}''+29$ satisfy the conditions of the problem.
+But we now fall into infinite descent, since then all of $m_i''$ are divisible by $2$, and so will $m_i'''$,
+and so on, ad infinitum. Hence, the only possibility is $m_1' = m_2' = \dots = m_{2017}' = 0$
+and the only tuple that satisfies the conditions of the problem is $n_1 = n_2 = \dots = n_{2017} = 29.$ $\hfill \blacksquare$
+
+\end{document}
