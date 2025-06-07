@@ -1,0 +1,226 @@
+\documentclass[fontsize=10pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage[a4paper, total={7in, 10.2in}]{geometry}
+\usepackage{txfonts}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+
+
+\begin{document}
+\title{\textsc{problems:}}
+\author{seriousPossibilists}
+\date{}
+\maketitle
+
+\subsubsection*{Problem 1: (Putnam 2024)}
+\textit{
+    Determine all positive integers $n$ for which there exists positive integers $a$, $b$, and $c$ satisfying
+\[
+2a^n+3b^n=4c^n.
+\]
+}
+\subsubsection*{Solution: }
+The answer is only $n=1$, which clearly has solutions (consider (1,2,2)). \newline 
+Scale so that $\gcd (a,b,c) = 1$.
+If $n=2$, we get \[2a^2 \equiv c^2 \text{ (mod 3)} \implies 3 \mid a,c\]
+Write $a' = \frac{a}{3}$ and $c' = \frac{c}{3} \implies 3 \mid b\quad \hookrightarrow \hookleftarrow  $. \newline
+By taking everything modulo $2,$, $b$ is even. Let $b = 2b'$.
+Plugging in and dividing both sides by $2$ gives us$$a^n + 2^{n-1} \cdot 3b'^n = 2c^n.$$Again taking modulo $2$ gives us $a$ is even. 
+Let $a = 2a'$. Plugging in and dividing both sides by $2$ again gives us$$2^{n-1} a'^n + 2^{n-2} \cdot 3b'^n = c^n.$$
+Taking modulo $2$ once again gives $c$ is even. $\quad \hookrightarrow \hookleftarrow $ $\hfill \blacksquare$
+
+\subsubsection*{Problem 2: (INMO 2025)}
+\textit{
+    Euclid has a tool called splitter which can only do the following two types of operations: \newline
+    • Given three non-collinear marked points $X,Y,Z$ it can draw the line which forms the interior angle bisector of $\angle{XYZ}$. \newline
+    • It can mark the intersection point of two previously drawn non-parallel lines. \newline
+    Suppose Euclid is only given three non-collinear marked points $A,B,C$ in the plane. \newline
+    Prove that Euclid can use the splitter several times to draw the centre of circle passing through $A,B$ and $C$.
+    \begin{flushright}
+        Shankhadeep Ghosh
+    \end{flushright}
+}
+\subsubsection*{Solution:}
+We will use the incenter-excenter lemma: which states that if $ABC$ be a triangle with incenter $I$,
+$A-$excenter $I_A$, and $L$ the midpoint of arc $BC$, $IBI_AC$ is a cyclic quadrilateral
+with center $L$. \newline
+The proof is left as an exercise. 
+We also claim that using the \emph{splitter}, Euclid can mark the center of a circle passing through $4$ 
+concyclic points. \newline
+\begin{center}
+
+\definecolor{qqwuqq}{rgb}{0.,0.39215686274509803,0.}
+\definecolor{qqqqcc}{rgb}{0.,0.,0.8}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=0.519005704425431cm,y=0.5224578165946268cm]
+\clip(-2.5545287113645454,0.5620713918368866) rectangle (20.314765376333554,11.032350612710717);
+\draw [line width=0.8pt,dash pattern=on 2pt off 2pt,color=qqqqcc] (6.051363423785214,5.939204279731517) ellipse (2.1029174626617992cm and 2.11690479825709cm);
+\draw [line width=0.8pt,domain=-2.5545287113645454:20.314765376333554] plot(\x,{(-6.695884403308314--0.9921911294922531*\x)/0.12472675156872848});
+\draw [line width=0.8pt,domain=-2.5545287113645454:20.314765376333554] plot(\x,{(--4.143442686553674--0.5095686562116923*\x)/0.8604299998295097});
+\draw [line width=0.8pt,color=qqwuqq,domain=-2.5545287113645454:20.314765376333554] plot(\x,{(-13.76601718440494--4.729471317703315*\x)/2.5009634054980925});
+\draw [fill=black] (7.,2.) circle (0.8pt);
+\draw[color=black] (7.5,1.30053240628076005) node {$A$};
+\draw [fill=black] (2.,6.) circle (0.8pt);
+\draw[color=black] (1.021315608966979,6.20034036194382165) node {$B$};
+\draw [fill=black] (9.838735887695401,7.3790138264433445) circle (0.8pt);
+\draw[color=black] (10.2,7.576200091861632) node {$C$};
+\draw [fill=black] (5.109264569992086,9.879977231941437) circle (0.8pt);
+\draw[color=black] (5.19635304596425,10.262514244503) node {$D$};
+\draw [fill=black] (7.94545950582997,9.521053207753235) circle (0.8pt);
+\draw[color=black] (8.0714869281264,9.007422349595859) node {$E$};
+\end{tikzpicture}
+
+\end{center}
+
+\textbf{Proof:} 
+Consideer concyclic points $ABCD$. Draw the angle bisectors of $\angle DBC$ and $\angle BAC$
+and intersect them at $E$. Then then angle bisector of $\angle BEC$ (highlighted in green) 
+is the perpendicular bisector of $BC$. Similarly, draw another perpendicular bisector and intersect them
+to get the center. 
+
+\definecolor{ccqqqq}{rgb}{0.8,0.,0.}
+\definecolor{qqqqcc}{rgb}{0.,0.,0.8}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-5.294531301065074,-1.9560666999567995) rectangle (22.37731454504963,10.712971157300538);
+\draw [line width=0.8pt,dash pattern=on 3pt off 3pt] (0.,10.073492919156184)-- (-2.,0.);
+\draw [line width=0.8pt,dash pattern=on 3pt off 3pt] (-2.,0.)-- (5.762766615463581,0.);
+\draw [line width=0.8pt,dash pattern=on 3pt off 3pt] (5.762766615463581,0.)-- (0.,10.073492919156184);
+\draw [line width=0.8pt,domain=-5.294531301065074:22.37731454504963] plot(\x,{(--1.622983396666974-0.9869357597964085*\x)/0.16111426390945682});
+\draw [line width=0.8pt,domain=-5.294531301065074:22.37731454504963] plot(\x,{(-2.891277930592549--0.5017169917716618*\x)/-0.865031826100979});
+\draw [line width=0.8pt,domain=-5.294531301065074:22.37731454504963] plot(\x,{(--1.269062812794892--0.634531406397446*\x)/0.7728970787208859});
+\draw [line width=0.8pt,domain=-1:1] plot(\x,{(-0.17211029696223462 - 0.9998540328129539*\x)/-0.01708546363644554});
+
+\draw [line width=0.8pt,domain=-5.294531301065074:22.37731454504963] plot(\x,{(-2.5316914221518942-0.0808215324143005*\x)/-0.9967285888837564});
+\draw [line width=0.8pt,domain=-5.294531301065074:22.37731454504963] plot(\x,{(-1.4970341922358608--0.2597769946502394*\x)/-0.9656686352214662});
+\draw [line width=0.8pt,domain=-5.294531301065074:22.37731454504963] plot(\x,{(--0.6739479524104427--0.33697397620522135*\x)/0.9415139613199811});
+\draw [line width=0.8pt,dash pattern=on 3pt off 3pt,color=qqqqcc] (-0.7480075668084095,1.751480050430647) circle (2.1529438961165575cm);
+\draw [line width=0.8pt,dash pattern=on 3pt off 3pt,color=ccqqqq] (1.881383307731791,-1.4512747781846511) circle (4.14383094048658cm);
+\draw [line width=0.8pt] (1.881383307731791,-1.9560666999567995) -- (1.881383307731791,10.712971157300538);
+\begin{footnotesize}
+\draw [fill=black] (0.,10.073492919156184) circle (1.5pt);
+\draw[color=black] (0.1778229493003754,10.285354890951464) node {$A$};
+\draw [fill=black] (-2.,0.) circle (1.5pt);
+\draw[color=black] (-1.9605739702078815,-0.45578590107106215) node {$B$};
+\draw [fill=black] (5.762766615463581,0.) circle (1.5pt);
+\draw[color=black] (5.49009589092515,-0.2528493678884503) node {$C$};
+\draw [color=black] (1.6444671099989057,0.)-- ++(-1.5pt,0 pt) -- ++(3.0pt,0 pt) ++(-1.5pt,-1.5pt) -- ++(0 pt,3.0pt);
+\draw[color=black] (1.750265493702733,0.21100556510037669) node {$D$};
+\draw [color=black] (3.2820198577555098,4.336421473487284)-- ++(-1.5pt,0 pt) -- ++(3.0pt,0 pt) ++(-1.5pt,-1.5pt) -- ++(0 pt,3.0pt);
+\draw[color=black] (3.5911897590021398,4.269736228752613) node {$E$};
+\draw [color=black] (-1.1983984213923662,4.037463913044208)-- ++(-1.5pt,0 pt) -- ++(3.0pt,0 pt) ++(-1.5pt,-1.5pt) -- ++(0 pt,3.0pt);
+\draw[color=black] (-1.3517643706600464,4.501663695247027) node {$F$};
+\draw [fill=black] (1.2137530359900626,2.638420159532336) circle (1.5pt);
+\draw[color=black] (1.126960427498997,2.2693618302382967) node {$I$};
+\draw [fill=black] (-0.11389193886785205,3.4084519928451598) circle (1.5pt);
+\draw[color=black] (-0.018181438317169167,3.617440229237075) node {$K$};
+\draw [fill=black] (1.3310228270628526,1.1921947554469103) circle (1.5pt);
+\draw[color=black] (1.402374293961113,0.8777970312718155) node {$I'$};
+\draw [fill=black] (-2.827037960679672,2.3107653454143833) circle (1.5pt);
+\draw[color=black] (-3.156449969319701,1.906458303190403) node {$I'_C$};
+\draw [fill=black] (-0.7480075668084095,1.751480050430647) circle (1.5pt);
+\draw[color=black] (-0.8444230377035169,1.4576156975078494) node {$O'$};
+\draw [fill=black] (1.881383307731791,-1.4512747781846511) circle (1.5pt);
+\draw[color=black] (1.9821929601971466,-1.2385411004897078) node {$P$};
+\end{footnotesize}
+\end{tikzpicture}
+\newline
+We are ready to construct the center of circle $ABC$. \newline
+\begin{itemize}
+    \item First draw angle bisectors of angles $\angle BAC, \angle CBA, \angle BCA$ and let them intersect 
+          the (imaginary) segments $BC, AC, AB$ at $D,E,F$ respectively. Mark $I$, the incenter.
+
+    \item Now mark the incenter of $\triangle BIC$, by drawing angle bisector of $\angle IBC, \angle ICB$. Label it $I'$.
+    \item Draw the angle bisector of $\angle BAI$. Let it intersect $CI$ at $K$. 
+    \item Draw the angle bisector of $\angle BIK$ to get the $C-$excenter of $\triangle BIC$. Label it $I_C'$.
+    \item By the incenter excenter lemma, $II'BI_C'$ is cyclic. Mark its center $O'$. $O'$ lies on the circumcircle of 
+          $\triangle BIC$, by the incenter-excenter lemma. Mark the center of $O'ICB$. Let it be $P$.
+    \item We draw the angle bisector of $BPC$ to get the perpendicular bisector of $BC$. Simialrly, construct another 
+          perpendicular bisector. Intersect them to get the center of circle $ABC$.
+\end{itemize} $\hfill \blacksquare$
+
+\subsubsection*{Problem 3: (Canada National Olympiad 2024)}
+\textit{
+Initially, three non-collinear points, $A$, $B$, and $C$, are marked on the plane. 
+You have a pencil and a double-edged ruler having width $1$. 
+Using them, you may perform the following operations:
+\begin{itemize}
+    \item  Mark an arbitrary point in the plane.
+    \item  Mark an arbitrary point on an already drawn line.
+    \item  If two points $P_1$ and $P_2$ are marked, draw the line connecting $P_1$ and $P_2$.
+    \item  If two non-parallel lines $l_1$ and $l_2$ are drawn, mark the intersection of $l_1$ and $l_2$.
+    \item  If a line $l$ is drawn, draw a line parallel to $l$ that is at distance $1$ away from $l$ (note that two such lines may be drawn).
+\end{itemize}
+Prove that it is possible to mark the orthocenter of $ABC$ using these operations.
+}
+\subsubsection*{Solution:}
+\textbf{Claim 1: } We can construct the internal angle bisector of $\angle BAC$ for marked points $ABC$.
+\begin{center}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-3.6255920415710405,-3.4334491623454806) rectangle (15.855887017740235,5.485782214206667);
+\draw [line width=0.8pt] (0.,0.)-- (5.667034945580339,0.);
+\draw [line width=0.8pt] (0.,0.)-- (2.,4.);
+\draw [line width=0.8pt] (0.,1.)-- (7.,1.);
+\draw [line width=0.8pt] (3.,4.)-- (1.,0.);
+\draw [line width=0.8pt] (0.,0.)-- (6.,4.);
+\draw [fill=black] (0.,0.) circle (2.0pt);
+\draw[color=black] (-0.43140506118108257,-0.34641541931684827) node {$A$};
+\draw [fill=black] (5.667034945580339,0.) circle (2.0pt);
+\draw[color=black] (5.732457354651296,-0.33621034909196024) node {$B$};
+\draw [fill=black] (2.,4.) circle (2.0pt);
+\draw[color=black] (2.00760672256716,4.439762516155643) node {$C$};
+\draw [fill=black] (0.,1.) circle (2.0pt);
+\draw[color=black] (0.23192450343664028,1.3272160975647904) node {$D$};
+\draw [fill=black] (7.,1.) circle (2.0pt);
+\draw[color=black] (7.140757045685846,1.3374211677896783) node {$E$};
+\draw [fill=black] (3.,4.) circle (2.0pt);
+\draw[color=black] (3.04852388550574,4.480582797055195) node {$F$};
+\draw [fill=black] (1.,0.) circle (2.0pt);
+\draw[color=black] (1.0075098405281318,-0.36682555976662434) node {$G$};
+\draw [fill=black] (6.,4.) circle (2.0pt);
+\draw[color=black] (6.161070304096595,4.34791688413165) node {$H$};
+\end{tikzpicture}
+\end{center}
+\begin{flushleft}
+    
+\textbf{Proof: } Given $\overrightarrow{AB}, \overrightarrow{AC}$, draw $\overrightarrow{FG}, \overrightarrow{ED}$ at a 
+distance of $1$. Thic creates a rhombus, and the diagonal of the rhombus is clearly the internal angle bisector.  \newline
+
+\textbf{Claim 2:} Given points $A,B$ on a drawn line, we can mark $C$ such that $AB=BC$ using the pencil and straightedge. (i, e, we can reflect points over points.) \newline
+\textbf{Proof: } 
+\begin{center}
+    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-2.4426472897174873,-2.204370745921569) rectangle (13.657748627068692,5.166894854534755);
+\draw [line width=0.8pt] (0.,0.)-- (7.293833099059166,0.);
+\draw [line width=0.8pt] (0.,1.)-- (7.150962115910734,1.0057563854808171);
+\draw [line width=0.8pt] (0.,2.)-- (7.304038169284055,2.005853267519845);
+\draw [line width=0.8pt] (0.,3.)-- (8.,3.);
+\draw [line width=0.8pt] (2.1504777057155926,3.)-- (0.,0.);
+\draw [line width=0.8pt] (2.1504777057155926,3.)-- (3.,0.);
+\draw [line width=0.8pt] (1.0752388528577963,1.5)-- (6.,0.);
+\begin{scriptsize}
+\draw [fill=black] (0.,0.) circle (1.5pt);
+\draw[color=black] (-0.23295439804751414,0.3131610409619696) node {$A$};
+\draw [fill=black] (3.,0.) circle (1.5pt);
+\draw[color=black] (3.1321885934651554,0.2541234446196421) node {$B$};
+\draw [fill=black] (2.1504777057155926,3.) circle (1.5pt);
+\draw[color=black] (2.1791531096532966,3.357814223759147) node {$P$};
+\draw [fill=black] (2.7162067435456456,1.0021864936225373) circle (1.5pt);
+\draw[color=black] (2.837000611753518,1.2746304671084465) node {$G$};
+\draw [fill=black] (1.0752388528577963,1.5) circle (1.5pt);
+\draw[color=black] (0.7453829127681993,1.6541578721662664) node {$M$};
+\draw [fill=black] (6.,0.) circle (1.5pt);
+\draw[color=black] (5.982861102566114,0.2709913292888785) node {$C$};
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
+Repeatedly draw lines at a distance 1 as shown and take an arbitrary point $P$. $G$ divides $PB$ in the ratio $2:1$. Mark $M$, the midpoint of $AP$. 
+Then $G$ act as a centroid and hence $\overrightarrow{MG} \cap \overrightarrow{AB}$ is the required point $C$.  \newline \newline
+Since we can also mark the intersection of drawn lines, by Claim 1, we can do everything the \emph{splitter} can in INMO 2025/3. (Problem and solution above).
+Hence we can mark the circumcenter and the centroid (we can draw perpendicular bisectors of sides using the \emph{splitter} and hence mark midpoints).
+Now we invoke the Euler line. Let $H,G,O$ be the orthocentre, centroid, and circumcenter respectively. Note that $G,O$ are
+already marked, and that $GH = 2GO$. Since $G$ lies between $H,O$, we can apply Claim 2 twice to get $H$. $\hfill \blacksquare$
+\end{flushleft}
+
+\end{document}
